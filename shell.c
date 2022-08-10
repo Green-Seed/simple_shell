@@ -13,7 +13,7 @@ void INThandler(int sig_n)
  * @argc: argument count
  * @argv: argument char-pointer array
  * @env: the environment
- * return: 0
+ * Return: 0
  */
 int main(int argc, char **argv, char **env)
 {
@@ -28,7 +28,7 @@ int main(int argc, char **argv, char **env)
 	{
 		if (isatty(STDIN_FILENO) == 1)
 			write(, "($) ", 4);
-		signal(SIGNT, INThandler);
+		signal(SIGINT, INThandler);
 		line_len = getline(&line, &bufsize, stdin);
 		count++;
 		if (special_case(line, line_len, &exit_st) == 3)

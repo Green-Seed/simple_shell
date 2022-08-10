@@ -19,13 +19,13 @@
 */
 typedef struct list_path
 {
-char *dir;
-struct list_path *next;
+	char *dir;
+	struct list_path *next;
 } list_p;
 
 /*Functions of the shell*/
-void execute_line(char **argv, char **commands, int count,
-	char **env, int *exit_st, char *line);
+void execute_line(char **argv, char **commands,
+int count, char **env, int *exit_st, char *line);
 char **split_line(char *line);
 list_p *list_path(char **env);
 int _setenv(const char *name, const char *value, int overwrite);
@@ -36,6 +36,7 @@ char *_getenv(const char *name, char **env);
 void _error(char **argv, char *first, int count, int **exit_st);
 int special_case(char *line, ssize_t line_len, int *exit_st);
 void print_num(int count);
+int num_is_positive(char *com)
 
 /*useful functions*/
 int _strlen(char *s);
@@ -46,4 +47,4 @@ int _strcmp(char *s1, char *s2);
 void free_loop(char **arr);
 void free_list(list_p *head);
 char *_strncpy(char *dest, char *src, int n);
-#endif /* SHELL_H*
+#endif /* SHELL_H_*/
