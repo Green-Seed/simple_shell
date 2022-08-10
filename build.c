@@ -2,7 +2,7 @@
 #include <ctype.h>
 #include <string.h>
 /**
- * num_is-positive - function that verifies if a string is a positive number
+ * num_is_positive - function that verifies if a string is a positive number
  * @com: string to check
  * Return: 0 on success and -1 if is negative or is not a number
  */
