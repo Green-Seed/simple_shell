@@ -40,3 +40,63 @@ Explanation:
     "n/login" means a file is read if the shell is not a login shell.
     "int." means a file is read if the shell is interactive.
 
+
+.SH EXAMPLES
+
+The shell works like this in interactive mode:
+
+.br
+	($) pwd
+.br
+	/home/vagrant/simple_shell
+.br
+	($) exit
+.br
+	$
+
+.br
+Running commands with arguments:
+
+.br
+	($) ls -l
+.br
+	total 72
+.br
+	-rw-rw-r-- 1 vagrant vagrant   343 Aug 2022 built_in.c
+.br
+	-rw-rw-r-- 1 vagrant vagrant   850 Aug 2022 error.c
+.br
+	-rw-rw-r-- 1 vagrant vagrant   555 Aug 2022 execute_line.c
+.br
+	-rw-rw-r-- 1 vagrant vagrant   305 Aug 2022 _getenv.c
+.br
+	-rwxrwxr-x 1 vagrant vagrant 14563 Aug 2022 hsh
+.br
+	($)
+
+.br
+The shell works like this in non-interactive mode:
+
+.br
+	$ echo "/bin/ls" | ./hsh
+.br
+	built_in.c      _getenv.c    man_1_simple_shell  shell.c         split_line.c
+.br
+	error.c         hsh          mini_shell          shell.h         useful_func.c
+.br
+	execute_line.c  list_path.c  README.md           special_case.c  _which.c
+.br
+	$
+
+.br
+Command error example:
+
+.br
+	$ echo "non-interactive" | ./hsh
+.br
+	./hsh: 1: non-interactive: not found
+.br
+	$
+
+.SH AUTHOR
+Rashmi Dayanand and Thandiwe Ngubane
