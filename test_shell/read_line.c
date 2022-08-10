@@ -1,4 +1,9 @@
 #include "shell.h"
+/**
+ * main - readline example
+ *
+ * Return: Always 0
+ */
 int main(void)
 {
 	char *line = NULL;

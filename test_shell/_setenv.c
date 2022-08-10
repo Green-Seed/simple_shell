@@ -19,7 +19,7 @@ int _setenv(const char *name, const char *value, int overwrite)
 
 	{
 
-		for(i = 0; environ[i]; i++)
+		for (i = 0; environ[i]; i++)
 
 			;
 
@@ -38,9 +38,9 @@ int _setenv(const char *name, const char *value, int overwrite)
 		printf("%s", environ[i]);
 
 	}
-		return(0);
+		return (0);
 	}
-		int main()
+		int main(void)
 	{
 /*const char name[] = "PATH";*/
 

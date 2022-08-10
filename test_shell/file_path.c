@@ -3,8 +3,9 @@
 #include <sys/stat.h>
 #include <unistd.h>
 /**
-* main - stat example
-*
+* main - stat exampl
+*@ac: example
+*@av: example
 * Return: Always 0.
 */
 int main(int ac, char **av)
@@ -25,17 +26,15 @@ int main(int ac, char **av)
 	while (av[i])
 	{
 		printf("%s:", av[i]);
-
 		if (stat(av[i], &st) == 0)
-	       	{
-			printf(" FOUND ");
+		{
+			printf(" FOUND\n");
 		}
-	else
-	{
-		printf(" NOT FOUND ");
+		else
+		{
+			printf(" NOT FOUND\n");
+		}
+		i++;
 	}
-	i++;
-	}
-
 	return (0);
 }

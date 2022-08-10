@@ -4,7 +4,8 @@
 #include <unistd.h>
 /**
 * main - stat example
-*
+* @ac: example
+* @av: example
 * Return: Always 0.
 */
 int main(int ac, char **av)

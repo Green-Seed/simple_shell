@@ -1,35 +1,56 @@
 #include "shell.h"
-void execute_line(char **arg)
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+
+/**
+ * execute - executes the command
+ * @forked: number of child processes
+ * Return: Always 0, -1 on error.
+ */
+int execute(int *forked)
 {
-	pid_t pid;
-
 	int status;
+	pid_t child_pid;
+	pid_t my_pid;
+	char *argv[] = {"/bin/ls", "-l", "/tmp", NULL};
 
-	struct stat st;
-
-	pid = fork();
-
-	if (pid < 0)
-		perror("error fork");
-	if (pid == 0)
+	if (*forked != 5)
 	{
-		if ((stat(arg[0], &st)) == 0)
+		child_pid = fork();
+		int status;
+
+		if (child_pid == -1)
 		{
-			execve(arg[0], arg, NULL);
-			
-			perror("Error");
-			
-			return;
+			perror("Error:");
+			return (1);
+		}
+		else if (child_pid == 0)
+		{
+			if (execve(argv[0], argv, NULL) == -1)
+				perror("Error:");
 		}
 		else
 		{
-	perror("Error");
-
-			return;
+			wait(&status);
+			*forked += 1;
+			execute(forked);
 		}
 	}
-	else
-	{
- 		wait(&status);
-	}
+	my_pid = getpid();
+
+	return (0);
+}
+/**
+ * main - fork & wait example
+ *
+ * Return: Always 0
+ */
+int main(void)
+{
+	int forked = 0;
+
+	execute(&forked);
+	return (0);
 }

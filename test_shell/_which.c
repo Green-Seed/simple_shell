@@ -1,45 +1,38 @@
 #include "shell.h"
-void find_file_in_path(list_p *head, char *file)
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
+/**
+ * main - stat example
+ * @ac: example
+ * @av: example
+ *
+ * Return: Always 0
+ */
+int main(int ac, char **av)
 {
+	unsigned int i;
 	struct stat st;
- 
-	char *full_path = NULL;
 
-	while(head)
+	if (ac < 2)
 	{
-
-		full_path = str_concat(head->dir, "/");
-
-		full_path = str_concat(full_path, file);
-
-		if (stat(full_path, &st) == 0)
+		printf("Usage: %s path_to_file ...\n", av[0]);
+		return (1);
+	}
+	i = 1;
+	while (av[i])
+	{
+		printf("%s:", av[i]);
+		if (stat(av[i], &st) == 0)
 		{
-			printf("%s ", full_path);
+			printf(" FOUND\n");
 		}
-
-	head = head->next;
+		else
+		{
+			printf(" NOT FOUND\n");
+		}
+		i++;
 	}
-}
-
-int main(int argc, char *argv[])
-{
-
-	list_p *head;
-
-	int count = 1;
-
-	(void)argc;
-
-	(void)argv;
-
-	head = list_path();
-
-	while (argv[count])
-	{
-		find_file_in_path(head, argv[count]);
-			count++;
-	}
-	free(head);
-
-	return (0)
+	return (0);
 }

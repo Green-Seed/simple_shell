@@ -36,7 +36,9 @@ char *_getenv(const char *name, char **env);
 void _error(char **argv, char *first, int count, int **exit_st);
 int special_case(char *line, ssize_t line_len, int *exit_st);
 void print_num(int count);
-int num_is_positive(char *com)
+int num_is_positive(char *com);
+int _putchar(char c);
+void _puts(char *str);
 
 /*useful functions*/
 int _strlen(char *s);

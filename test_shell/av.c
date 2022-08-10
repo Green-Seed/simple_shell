@@ -5,7 +5,7 @@ int main(int argc, char **argv)
 
 	while (*argv != NULL)
 	{
-		while (**argv != '')
+		while (**argv != '\0')
 	{
 	putchar(**argv);
 
